@@ -1,18 +1,20 @@
+## N
 ## Idea, approach and time complexity:
-'''The code aims to find two numbers in the given list whose sum equals the target value. It utilizes a two-pointer approach by initializing pointers at the beginning 
-and end of the list. The algorithm iterates through the list, calculating the sum of the numbers pointed by the two pointers. If the current sum is greater than the 
-target, the right pointer is decremented; if it's less, the left pointer is incremented. If the sum equals the target, the indices of the two numbers are returned. 
-This approach achieves a time complexity of O(n), where n is the number of elements in the list, as it traverses the list only once with two pointers.'''
+'''
+The code implements a two-pointer approach to solve the "Two Sum" problem on a sorted list. It initializes two pointers, `l` (left) and `r` (right), and adjusts them 
+based on the sum of the values they point to relative to the target. If the sum is greater than the target, it moves the right pointer left; if less, it moves the left 
+pointer right, and if equal, it returns the indices (1-based). The time complexity is O(n), where n is the length of the input list, as each element is processed at 
+most once.
+'''
 
-## Code:
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        l,r=0,len(numbers)-1
-        while(l<r):
-            csum=numbers[l]+numbers[r]
-            if csum>target:
+        l,r=0,(len(numbers)-1)
+        for i in range(len(numbers)):
+            sum=numbers[l]+numbers[r]
+            if(sum>target):
                 r-=1
-            elif csum<target:
+            elif(sum<target):
                 l+=1
             else:
                 return [l+1,r+1]
