@@ -7,7 +7,9 @@ each node, it updates the `next` pointer to point to the `prev` node. This conti
 to the new head of the reversed list. The time complexity is \(O(n)\), where \(n\) is the number of nodes in the list, as each node is processed once.
 
 ##A2:
-
+The provided code implements a recursive solution to reverse a singly linked list. The helping function takes two parameters: prev (the previous node) and curr 
+(the current node). It reverses the pointers of the nodes by setting the next of the curr node to prev. If curr is None, it means we've reached the end of the list, and 
+we return prev, which will be the new head of the reversed list.
 '''
 
 ## A1
@@ -23,3 +25,14 @@ class Solution:
         return prev
     
 ## A2
+class Solution:
+    def helping(self,prev,curr):
+        if(not curr):
+            return prev
+        temp=curr.next
+        curr.next=prev
+        newhead=self.helping(curr,temp)
+        return newhead
+    
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        return self.helping(None,head)
