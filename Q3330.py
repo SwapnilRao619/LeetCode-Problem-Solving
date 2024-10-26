@@ -8,9 +8,8 @@ where n is the length of the string, as it processes each character exactly once
 
 class Solution:
     def possibleStringCount(self, word: str) -> int:
-        c = 1 
-        n = len(word)
-        for i in range(1, n):
-            if word[i] == word[i - 1]:
-                c += 1
+        c=1
+        for i in range(1,len(word)):
+            if(word[i-1]==word[i]):
+                c+=1
         return c
