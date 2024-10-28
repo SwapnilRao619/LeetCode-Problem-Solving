@@ -4,7 +4,7 @@
 The provided code implements the Merge Sort algorithm, which is a divide-and-conquer sorting technique. The approach involves recursively splitting the input array `nums` 
 into smaller subarrays until each subarray contains a single element, as a single element is inherently sorted. The `halfer` method handles this recursive splitting, 
 while the `merge` method is responsible for merging the sorted subarrays back together in a sorted manner. During the merge process, two pointers are used to compare 
-elements from the left and right subarrays, ensuring that the merged result remains sorted. The overall time complexity of the Merge Sort algorithm is O(n log n), where 
+elements from the left and right subarrays, ensuring that the merged result remains sorted. The overall time complexity of the Merge Sort algorithm is O(n*logn), where 
 n is the number of elements in the input array. This efficiency arises from the logarithmic number of divisions (due to halving) and linear time spent merging the 
 subarrays at each level of recursion. Merge Sort is particularly advantageous for large datasets and provides stable sorting, maintaining the relative order of equal 
 elements.
