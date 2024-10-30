@@ -3,7 +3,7 @@
 '''
 The provided code implements the Merge Sort algorithm, which sorts an array by recursively dividing it into halves (in the `halfer` method) until single-element arrays 
 are reached. The `merger` method then combines these sorted halves back together. The overall time complexity of this approach is O(n log n), where n is the number of 
-elements in the array, due to the logarithmic depth of the recursion and the linear time needed to merge the sorted subarrays.
+elements in the array, due to the logarithmic depth of the recursion and the linear time, needed to merge the sorted subarrays.
 '''
 
 class Solution:
