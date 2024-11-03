@@ -1,24 +1,22 @@
 ## N
 ## Idea, approach and time complexity:
 '''
-The solution determines if one string, `goal`, can be derived from another string, `s`, through left rotations. It uses a helper function to perform the rotation and 
-iterates through all possible rotations of `s`, checking each configuration against `goal`. If a match is found, it returns `True`; otherwise, it returns `False` after 
-exhausting all possibilities. The overall time complexity is O(n²), where n is the length of `s`, due to the nested checks for each rotation.
+The approach involves rotating the string `s` one character at a time and checking if the resulting string matches the target string `goal`. The `rot` function creates 
+a rotated version of the string by moving the first character to the end. This process continues until all rotations have been checked or a match is found. The time 
+complexity is O(n²), where n is the length of the string, due to n rotations, each taking O(n) time for string comparison.
 '''
 
 class Solution:
-    def rotateleft(self,word):
+    def rot(self,word):
         return word[1:]+word[0]
 
     def rotateString(self, s: str, goal: str) -> bool:
-        count=1
         temp=s
-        if(len(goal)<len(s)):
-            return False
-        while(count<len(s)):
-            temp=self.rotateleft(temp)
-            if(all(temp[i]==goal[i] for i in range(len(goal))) or s==goal):
+        i=0
+        while(i<len(s)):
+            temp=self.rot(temp)
+            if(temp==goal):
                 return True
             else:
-                count+=1
+                i+=1
         return False
