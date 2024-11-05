@@ -1,30 +1,33 @@
+## N
 ## Idea, approach and time complexity:
-'''The code implements a binary search algorithm to find the target element in the rotated sorted array. It first checks if the array has only one element and if it 
-matches the target. Then, it initializes low and high pointers to the start and end of the array, respectively. The algorithm iteratively updates the mid pointer 
-and compares the target with the elements at the mid index. If the target is found, it returns the index. Otherwise, it adjusts the low and high pointers based on 
-the relative positions of the target and mid element, ensuring that the search space is reduced in each iteration. If the target is not found, the function returns 
--1. Overall, the approach is to efficiently search for the target element in a rotated sorted array using binary search, achieving O(log n) runtime complexity.'''
+'''
+The solution is designed to search for a target in a rotated sorted array. First, it finds the index of the smallest element (pivot) using binary search. Then, it 
+performs binary search on the appropriate half of the array, based on whether the target is in the rotated portion or the sorted portion. The time complexity is 
+\( O(\log n) \) because each binary search operation runs in logarithmic time.
+'''
 
-## Code:
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        if len(nums)==1:
-            if nums[0]==target:
-                return 0
-        low=0;
-        high=(len(nums))-1
-        while(low<=high):
-            mid=(low+high)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid]>=nums[low]:
-                if target>=nums[low] and target<nums[mid]:
-                    high=mid-1
-                else:
-                    low=mid+1
+    def binSearch(self,arr,l,h,key):
+        while(l<=h):
+            m=(l+h)//2
+            if(key<arr[m]):
+                h=m-1
+            elif(key>arr[m]):
+                l=m+1
             else:
-                if target>nums[mid] and target<=nums[high]:
-                    low=mid+1
-                else:
-                    high=mid-1
+                return m
         return -1
+
+    def search(self, nums: List[int], target: int) -> int:
+        l,h=0,(len(nums)-1)
+        while(l<h):
+            m=(l+h)//2
+            if(nums[m]>nums[h]):
+                l=m+1
+            else:
+                h=m
+        smallpivot=l
+        if(nums[smallpivot]<=target<=nums[-1]):
+            return self.binSearch(nums,smallpivot,(len(nums)-1),target)
+        else:
+            return self.binSearch(nums,0,(smallpivot-1),target)
