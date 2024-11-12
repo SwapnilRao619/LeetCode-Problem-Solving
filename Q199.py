@@ -7,12 +7,12 @@ number of nodes, and the space complexity is O(W), where W is the maximum width 
 '''
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if(not root):
             return []
         q=deque()
-        q.append(root)
         ans=[]
+        q.append(root)
         while(q):
             ls=len(q)
             lv=[]
@@ -23,5 +23,5 @@ class Solution:
                     q.append(curr.left)
                 if(curr.right):
                     q.append(curr.right)
-            ans.append(lv)
+            ans.append(lv[-1])
         return ans
