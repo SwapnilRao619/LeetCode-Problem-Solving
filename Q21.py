@@ -3,7 +3,7 @@
 '''
 The provided solution merges two sorted linked lists by using a dummy node to simplify handling of the head of the merged list. It iteratively compares the nodes of both
 lists, appending the smaller node to the merged list, and continues until one list is exhausted. The remaining nodes of the non-exhausted list are then linked to the 
-merged list. The time complexity is O(n + m), where n and m are the lengths of the two lists.
+merged list. The time complexity is O(n + m), where n and m are the lengths of the 2 lists.
 '''
 
 class Solution:
