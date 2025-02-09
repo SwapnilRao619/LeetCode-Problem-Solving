@@ -1,10 +1,9 @@
 ## N
 ## Idea, approach and time complexity:
 '''
-The approach used in this solution is Depth-First Search (DFS) to explore and mark all the connected lands in the grid as visited (by changing "1" to "0"). Starting from 
-any land cell ("1"), the DFS recursively explores its neighboring cells (up, down, left, right) and marks the entire island as visited. The solution then counts the 
-number of such DFS calls, representing the number of islands. The algorithm visits each cell once, making the time complexity O(r * c), where r is the number of rows and 
-c is the number of columns in the grid.
+The problem is to find the maximum area of an island in a 2D grid, where 1 represents land and 0 represents water. The approach uses Depth-First Search (DFS) to explore 
+all connected lands starting from each unvisited land cell. For each island, we count the number of connected land cells (the area) and keep track of the maximum area 
+found. The time complexity is O(r * c), where `r` and `c` are the number of rows and columns in the grid, because each cell is visited once.
 '''
 
 class Solution:
