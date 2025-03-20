@@ -1,16 +1,19 @@
 ## Idea, approach and time complexity:
-'''The code implements an intersection algorithm to find the common elements between two arrays, nums1 and nums2. It first creates a hashset, hs, to store the unique 
-elements of nums1. Then, it iterates through nums2 and checks if each element is present in the hashset. If the element is found, it is added to the result list, res, 
-and removed from the hashset to ensure uniqueness. Finally, the function returns the list of common elements. The approach efficiently finds the intersection of two 
-arrays using a hashset, achieving a time complexity of O(n), where n is the size of the larger array.'''
+'''The idea behind this solution is to find the intersection of two arrays, `nums1` and `nums2`. The approach uses a set (`seen`) to store unique elements from `nums1`. 
+Then, it iterates through `nums2` and checks if an element is present in the `seen` set and not yet added to the result list (`ans`). This ensures that the intersection 
+is captured without duplicates. The time complexity is **O(m + n)**, where `m` and `n` are the lengths of `nums1` and `nums2`, respectively. This is because we loop 
+through each array once to populate the set and check for intersections. The space complexity is **O(m)**, due to the storage used by the set for unique elements from 
+`nums1`.'''
 
 ## Code:
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        res=[]
-        hs=set(nums1) #the hashset stores unique elements
-        for i in nums2:
-            if i in hs:
-                res.append(i)
-                hs.remove(i)
-        return res
+        seen=set()
+        ans=[]
+        for i in range(len(nums1)):
+            if(nums1[i] not in seen):
+                seen.add(nums1[i])
+        for j in range(len(nums2)):
+            if(nums2[j] in seen and nums2[j] not in ans):
+                ans.append(nums2[j])
+        return ans
